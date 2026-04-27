@@ -1,5 +1,5 @@
 import { app } from './app.js';
-import { analytics } from './config.js';
+import { analytics, AI_ENABLED } from './config.js';
 import { logEvent } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
 import { authManager } from './auth.js';
 import { store } from './store.js';
@@ -18,9 +18,11 @@ export const ui = {
     setupEventListeners() {
         // AI Trigger logic
         const aiTrigger = document.getElementById('ai-trigger');
-        if (aiTrigger) {
+        if (aiTrigger && AI_ENABLED) {
             aiTrigger.addEventListener('mouseenter', () => this.toggleAiTooltip(true));
             aiTrigger.addEventListener('mouseleave', () => this.toggleAiTooltip(false));
+        } else if (aiTrigger) {
+            aiTrigger.classList.add('hidden');
         }
 
         // Close mobile menu on resize if desktop
@@ -116,6 +118,11 @@ export const ui = {
         const trigger = document.getElementById('ai-trigger');
         if (!trigger) return;
         
+        if (!AI_ENABLED) {
+            trigger.classList.add('hidden');
+            return;
+        }
+
         if (pageId === 'ai') {
             trigger.innerHTML = '<span class="text-2xl">🏠</span>';
             trigger.onclick = (e) => {
@@ -165,7 +172,7 @@ export const ui = {
 
         if (pageId === 'learning') learningModule.init();
         if (pageId === 'quiz') quizModule.init();
-        if (pageId === 'ai') aiModule.init();
+        if (pageId === 'ai' && AI_ENABLED) aiModule.init();
     },
 
     showNotification(message, type = 'info') {

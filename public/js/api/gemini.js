@@ -1,4 +1,4 @@
-import { auth, db } from '../config.js';
+import { auth, db, AI_ENABLED } from '../config.js';
 import { httpsCallable, getFunctions } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-functions.js";
 
 const functions = getFunctions(undefined, 'us-central1');
@@ -6,6 +6,10 @@ const askElectraFn = httpsCallable(functions, 'askElectra');
 
 export const geminiApi = {
     async generateResponse(prompt, context = '', history = []) {
+        if (!AI_ENABLED) {
+            console.warn("AI is currently disabled. Skipping API call.");
+            return null;
+        }
         try {
             const result = await askElectraFn({
                 prompt: prompt,

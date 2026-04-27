@@ -2,6 +2,7 @@ import { ui } from './ui.js';
 import { authManager } from './auth.js';
 import { journeyEngine } from './journey.js';
 import { aiModule } from './ai.js';
+import { AI_ENABLED } from './config.js';
 import { simulationModule } from './simulation.js';
 import { quizModule } from './quiz.js';
 import { store } from './store.js';
@@ -16,7 +17,9 @@ export const app = {
         window.journeyEngine = journeyEngine;
         window.ui = ui;
         window.authManager = authManager;
-        window.aiModule = aiModule;
+        if (AI_ENABLED) {
+            window.aiModule = aiModule;
+        }
         window.simulationModule = simulationModule;
         window.quizModule = quizModule;
         window.store = store;

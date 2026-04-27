@@ -3,6 +3,7 @@ import { store } from './store.js';
 import { ui } from './ui.js';
 import { app } from './app.js';
 import { geminiApi } from './api/gemini.js';
+import { AI_ENABLED } from './config.js';
 
 export const aiModule = {
     currentStep: null,
@@ -11,6 +12,23 @@ export const aiModule = {
     isTyping: false,
 
     render() {
+        if (!AI_ENABLED) {
+            return `
+                <div class="h-[calc(100vh-140px)] w-full flex items-center justify-center bg-slate-900/50 rounded-2xl md:rounded-[3rem] border border-white/5 overflow-hidden glass animate-fade-in shadow-2xl relative p-8 text-center">
+                    <div class="max-w-md space-y-6">
+                        <div class="w-20 h-20 bg-indigo-600/10 rounded-3xl flex items-center justify-center mx-auto glow">
+                            <span class="text-4xl">🤖</span>
+                        </div>
+                        <h2 class="text-3xl font-bold font-outfit">Electra AI</h2>
+                        <p class="text-slate-400 text-lg">Electra AI assistant is currently unavailable. Please explore the interactive learning modules and simulations.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                            <button onclick="app.navigateTo('learning')" class="px-6 py-3 bg-indigo-600 rounded-xl font-bold text-sm hover:bg-indigo-500 transition-all">Explore Learning</button>
+                            <button onclick="journeyEngine.start()" class="px-6 py-3 glass rounded-xl font-bold text-sm hover:bg-white/10 transition-all">Start Simulation</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
         return `
             <div class="h-[calc(100vh-140px)] w-full flex bg-slate-900/50 rounded-2xl md:rounded-[3rem] border border-white/5 overflow-hidden glass animate-fade-in shadow-2xl relative">
                 <!-- Sidebar Toggle (Mobile Only) -->
@@ -70,6 +88,10 @@ export const aiModule = {
     },
 
     async init() {
+        if (!AI_ENABLED) {
+            console.log("AI Module is disabled.");
+            return;
+        }
         console.log("AI Module Initializing...");
         await this.loadSessions();
         this.newSession(); // Always start with a fresh landing state
