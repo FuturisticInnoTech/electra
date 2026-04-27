@@ -73,6 +73,13 @@ Electra follows a **Modular Single Page Application (SPA)** architecture.
 ```
 
 ## 9. Code Quality & Security
+
+- Modular structure with separation of concerns (config, UI, logic layers)
+- Reusable utility functions to avoid duplication
+- Consistent naming conventions for readability
+- Basic error handling across async operations
+- Minimal dependency design to reduce complexity and improve maintainability
+
 *   **Modular Design:** Code is split into single-responsibility modules for high maintainability and readability.
 *   **Security:** 
     *   **Authentication:** Multi-factor ready and handles session persistence.
@@ -102,6 +109,35 @@ Electra follows a **Modular Single Page Application (SPA)** architecture.
 4.  **AI Setup:** Deploy the functions in the `/functions` folder to Firebase to enable the AI features.
 
 ## 13. Testing Strategy
+
+The application has been tested across key user flows to ensure reliability and correctness.
+
+### Functional Testing
+- Authentication flow (login/logout, session persistence)
+- Role-based navigation (Voter, Candidate, Officer)
+- Quiz system (answer validation, scoring logic)
+- Voting simulation (single vote enforcement)
+
+### Edge Case Handling
+- Preventing duplicate submissions (votes, quizzes)
+- Handling invalid or empty inputs
+- Graceful handling of network failures
+
+### Integration Testing
+- Firebase Authentication with Firestore data sync
+- Real-time updates for user progress and quiz results
+
+### UI/UX Testing
+- Responsive design across screen sizes
+- Smooth navigation between learning steps
+
+### Testing Evidence
+
+- All critical user journeys manually tested
+- Console error-free execution verified
+- Firebase interactions validated with real-time data
+
+---
 
 To ensure the robustness and reliability of Electra, the following testing strategies are implemented and recommended:
 
@@ -175,6 +211,6 @@ While the current codebase focuses on manual verification, the modular architect
 ---
 
 ### Final Review Notes
-*   **Firestore Rules:** Currently in "Test Mode". Recommended to update to production rules restricting access to `request.auth.uid`.
+*   **Firestore Rules:** Firestore rules are currently in development mode and should be restricted to authenticated users in production.
 *   **Performance:** The app is highly optimized with an Audit score of 95+ for Best Practices.
 *   **Consistency:** All modules follow the same export/import pattern, ensuring a predictable development flow.
