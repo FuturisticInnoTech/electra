@@ -6,6 +6,12 @@ import { FIREBASE_CONFIG } from "./firebase-config.js";
 
 // Initialize Firebase
 const app = initializeApp(FIREBASE_CONFIG);
+
+// Initialize global Firebase for Compat SDK (if scripts are included in index.html)
+if (typeof firebase !== 'undefined') {
+    firebase.initializeApp(FIREBASE_CONFIG);
+}
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const analytics = getAnalytics(app);

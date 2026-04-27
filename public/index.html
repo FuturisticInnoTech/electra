@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="icon" href="assets/bolt-logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electra | Intelligent Election Assistant</title>
-    <meta name="description" content="Master the election process with Electra. Interactive guides, voting simulations, and civic knowledge quizzes.">
-    
+    <title>Electra</title>
+    <meta name="description"
+        content="Master the election process with Electra. Interactive guides, voting simulations, and civic knowledge quizzes.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --primary: #6366f1;
@@ -19,7 +24,8 @@
             --glass: rgba(30, 41, 59, 0.6);
         }
 
-        html, body {
+        html,
+        body {
             overflow-x: hidden;
             width: 100%;
             position: relative;
@@ -32,7 +38,12 @@
             min-height: 100vh;
         }
 
-        h1, h2, h3, .font-outfit { font-family: 'Outfit', sans-serif; }
+        h1,
+        h2,
+        h3,
+        .font-outfit {
+            font-family: 'Outfit', sans-serif;
+        }
 
         .glass {
             background: var(--glass);
@@ -40,7 +51,10 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .glow { box-shadow: 0 0 30px rgba(99, 102, 241, 0.2); }
+        .glow {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+        }
+
         .gradient-text {
             background: linear-gradient(135deg, #818cf8 0%, #06b6d4 100%);
             -webkit-background-clip: text;
@@ -52,6 +66,7 @@
             width: 100%;
             overflow-x: hidden;
         }
+
         .hidden-page {
             opacity: 0;
             transform: translateY(10px);
@@ -64,14 +79,30 @@
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 10px;
+        }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
-        .animate-float { animation: float 4s ease-in-out infinite; }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
 
         /* Mesh Gradient Background */
         .mesh-bg {
@@ -83,7 +114,7 @@
             z-index: -1;
             background-color: #0f172a;
             pointer-events: none;
-            background-image: 
+            background-image:
                 radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
                 radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
@@ -91,6 +122,7 @@
         }
     </style>
 </head>
+
 <body class="min-h-screen">
     <div class="mesh-bg"></div>
     <!-- Main Website Navbar -->
@@ -98,25 +130,34 @@
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-8">
                 <div class="flex items-center space-x-2 md:space-x-3 shrink-0">
-                    <div class="w-8 h-8 md:w-10 md:h-10 bg-indigo-600/10 rounded-xl flex items-center justify-center glow border border-white/5">
-                        <img src="assets/bolt-logo.png" class="w-6 h-6 md:w-7 md:h-7 object-contain drop-shadow-[0_0_10px_rgba(99,102,241,0.5)]" alt="Electra Logo">
+                    <div
+                        class="w-8 h-8 md:w-10 md:h-10 bg-indigo-600/10 rounded-xl flex items-center justify-center glow border border-white/5">
+                        <img src="assets/bolt-logo.png"
+                            class="w-6 h-6 md:w-7 md:h-7 object-contain drop-shadow-[0_0_10px_rgba(99,102,241,0.5)]"
+                            alt="Electra Logo">
                     </div>
                     <span class="text-lg md:text-xl font-bold font-outfit tracking-tight">Electra</span>
                 </div>
-                
+
                 <!-- Desktop Nav -->
                 <div class="hidden md:flex space-x-6 text-sm font-medium">
-                    <a href="#" onclick="app.navigateTo('home')" class="nav-link hover:text-indigo-400 transition-all duration-300 relative group py-2">
+                    <a href="#" onclick="app.navigateTo('home')"
+                        class="nav-link hover:text-indigo-400 transition-all duration-300 relative group py-2">
                         Home
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#" onclick="app.navigateTo('learning')" class="nav-link hover:text-indigo-400 transition-all duration-300 relative group py-2">
+                    <a href="#" onclick="app.navigateTo('learning')"
+                        class="nav-link hover:text-indigo-400 transition-all duration-300 relative group py-2">
                         Learning
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#" onclick="app.navigateTo('quiz')" class="nav-link hover:text-indigo-400 transition-all duration-300 relative group py-2">
+                    <a href="#" onclick="app.navigateTo('quiz')"
+                        class="nav-link hover:text-indigo-400 transition-all duration-300 relative group py-2">
                         Quiz
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
                     </a>
                 </div>
             </div>
@@ -125,23 +166,28 @@
                 <div id="auth-section" class="hidden md:flex items-center space-x-4">
                     <!-- Auth buttons injected here for Desktop -->
                 </div>
-                
+
                 <!-- Mobile Menu Toggle -->
-                <button id="mobile-menu-toggle" onclick="ui.toggleMobileMenu()" class="md:hidden p-2 glass rounded-lg active:scale-95 transition-transform">
+                <button id="mobile-menu-toggle" onclick="ui.toggleMobileMenu()"
+                    class="md:hidden p-2 glass rounded-lg active:scale-95 transition-transform">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
             </div>
         </div>
-        
+
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden glass border-b border-white/5 animate-fade-in overflow-hidden">
             <div class="px-6 py-6 flex flex-col space-y-5 text-center font-medium">
-                <a href="#" onclick="app.navigateTo('home'); ui.toggleMobileMenu(false)" class="text-base hover:text-indigo-400 transition-colors uppercase tracking-widest font-bold">Home</a>
-                <a href="#" onclick="app.navigateTo('learning'); ui.toggleMobileMenu(false)" class="text-base hover:text-indigo-400 transition-colors uppercase tracking-widest font-bold">Learning</a>
-                <a href="#" onclick="app.navigateTo('quiz'); ui.toggleMobileMenu(false)" class="text-base hover:text-indigo-400 transition-colors uppercase tracking-widest font-bold">Quiz</a>
-                
+                <a href="#" onclick="app.navigateTo('home'); ui.toggleMobileMenu(false)"
+                    class="text-base hover:text-indigo-400 transition-colors uppercase tracking-widest font-bold">Home</a>
+                <a href="#" onclick="app.navigateTo('learning'); ui.toggleMobileMenu(false)"
+                    class="text-base hover:text-indigo-400 transition-colors uppercase tracking-widest font-bold">Learning</a>
+                <a href="#" onclick="app.navigateTo('quiz'); ui.toggleMobileMenu(false)"
+                    class="text-base hover:text-indigo-400 transition-colors uppercase tracking-widest font-bold">Quiz</a>
+
                 <!-- Mobile Auth -->
                 <div id="mobile-auth-section" class="pt-4 border-t border-white/5 flex flex-col space-y-3">
                     <!-- Auth buttons injected here for Mobile -->
@@ -160,45 +206,61 @@
                         Experience <span class="gradient-text">Democracy</span> Like Never Before
                     </h1>
                     <p class="text-sm md:text-lg text-slate-400 leading-relaxed max-w-lg mx-auto md:mx-0 px-4 md:px-0">
-                        Electra is your intelligent election companion. Explore the process through immersive simulations or learn at your own pace.
+                        Electra is your intelligent election companion. Explore the process through immersive
+                        simulations or learn at your own pace.
                     </p>
                     <div class="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4 px-6 md:px-0">
-                        <button onclick="journeyEngine.start()" class="w-full sm:w-auto px-8 py-4 bg-indigo-600 rounded-2xl font-bold text-base glow hover:scale-105 transition-all">Simulate an Election 🚀</button>
-                        <button onclick="app.navigateTo('learning')" class="w-full sm:w-auto px-8 py-4 glass rounded-2xl font-bold text-sm hover:bg-white/10 transition-all">Quick Learning</button>
+                        <button onclick="journeyEngine.start()"
+                            class="w-full sm:w-auto px-8 py-4 bg-indigo-600 rounded-2xl font-bold text-base glow hover:scale-105 transition-all">Simulate
+                            an Election 🚀</button>
+                        <button onclick="app.navigateTo('learning')"
+                            class="w-full sm:w-auto px-8 py-4 glass rounded-2xl font-bold text-sm hover:bg-white/10 transition-all">Quick
+                            Learning</button>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 relative">
                     <div class="glass p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] glow animate-float border-white/10">
-                        <img src="assets/election-icon.png" class="mx-auto mb-6 rounded-2xl shadow-2xl max-h-[300px] md:max-h-none" alt="Election Icon">
+                        <img src="assets/election-icon.png"
+                            class="mx-auto mb-6 rounded-2xl shadow-2xl max-h-[300px] md:max-h-none" alt="Election Icon">
                         <div class="space-y-4 text-center">
                             <h3 class="text-xl md:text-2xl font-bold font-outfit">Ready to participate?</h3>
-                            <p class="text-slate-400 text-sm">Join 10,000+ users learning about the democratic process today.</p>
+                            <p class="text-slate-400 text-sm">Join 10,000+ users learning about the democratic process
+                                today.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- Contextual AI Assistant (Floating on Home) -->
-        <div id="ai-bubble-container" class="fixed bottom-6 right-6 md:bottom-10 md:right-8 z-[90] transition-all duration-500">
-            <div id="ai-context-tooltip" class="absolute bottom-full right-0 mb-4 w-64 glass p-4 rounded-2xl hidden animate-fade-in border-indigo-500/30 shadow-2xl">
-                <p id="ai-suggestion" class="text-xs text-slate-300 leading-relaxed">Hi! I'm Electra. How can I help you understand elections today?</p>
-                <button onclick="aiModule.askContextual()" class="mt-3 text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Ask Electra AI</button>
+        <div id="ai-bubble-container"
+            class="fixed bottom-6 right-6 md:bottom-10 md:right-8 z-[90] transition-all duration-500">
+            <div id="ai-context-tooltip"
+                class="absolute bottom-full right-0 mb-4 w-64 glass p-4 rounded-2xl hidden animate-fade-in border-indigo-500/30 shadow-2xl">
+                <p id="ai-suggestion" class="text-xs text-slate-300 leading-relaxed">Hi! I'm Electra. How can I help you
+                    understand elections today?</p>
+                <button onclick="aiModule.askContextual()"
+                    class="mt-3 text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Ask Electra AI</button>
             </div>
-            <button id="ai-trigger" onclick="app.navigateTo('ai')" class="w-14 h-14 md:w-16 md:h-16 bg-indigo-600 rounded-full shadow-2xl flex items-center justify-center glow hover:scale-110 transition-all">
+            <button id="ai-trigger" onclick="app.navigateTo('ai')"
+                class="w-14 h-14 md:w-16 md:h-16 bg-indigo-600 rounded-full shadow-2xl flex items-center justify-center glow hover:scale-110 transition-all">
                 <span class="text-xl md:text-2xl animate-float">🤖</span>
             </button>
         </div>
     </main>
 
     <!-- IMMERSIVE SIMULATION MODE (Full Screen Overlay) -->
-    <div id="journey-engine" class="fixed inset-0 z-[100] bg-slate-950 hidden transition-opacity duration-500 overflow-hidden">
+    <div id="journey-engine"
+        class="fixed inset-0 z-[100] bg-slate-950 hidden transition-opacity duration-500 overflow-hidden">
         <!-- Floating Header -->
         <header class="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-50">
-            <button onclick="journeyEngine.exit()" class="px-4 py-2 glass rounded-full text-xs font-bold hover:bg-white/10 transition-all">✕ Exit Simulation</button>
+            <button onclick="journeyEngine.exit()"
+                class="px-4 py-2 glass rounded-full text-xs font-bold hover:bg-white/10 transition-all">✕ Exit
+                Simulation</button>
             <div class="glass px-4 py-2 rounded-full flex items-center space-x-3">
                 <div class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
-                <span id="journey-progress-text" class="text-xs font-bold uppercase tracking-widest text-slate-300">Step 1/5</span>
+                <span id="journey-progress-text" class="text-xs font-bold uppercase tracking-widest text-slate-300">Step
+                    1/5</span>
             </div>
             <div id="user-profile-mini"></div>
         </header>
@@ -207,15 +269,20 @@
         <div id="step-container" class="h-full w-full"></div>
 
         <!-- Timeline Rail -->
-        <aside id="side-timeline" class="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col space-y-4 z-40"></aside>
+        <aside id="side-timeline" class="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col space-y-4 z-40">
+        </aside>
 
         <!-- Nav Controls -->
         <footer class="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center space-x-8 z-50">
-            <button id="prev-step" onclick="journeyEngine.prev()" class="p-4 glass rounded-full opacity-50 hover:opacity-100 transition-all disabled:hidden">←</button>
+            <button id="prev-step" onclick="journeyEngine.prev()"
+                class="p-4 glass rounded-full opacity-50 hover:opacity-100 transition-all disabled:hidden">←</button>
             <div class="h-1 w-32 bg-slate-800 rounded-full overflow-hidden">
-                <div id="step-progress-bar" class="h-full bg-indigo-500 transition-all duration-500" style="width: 20%"></div>
+                <div id="step-progress-bar" class="h-full bg-indigo-500 transition-all duration-500" style="width: 20%">
+                </div>
             </div>
-            <button id="next-step" onclick="journeyEngine.next()" class="px-8 py-4 bg-white text-slate-900 rounded-full font-bold hover:scale-105 transition-all">Next Step →</button>
+            <button id="next-step" onclick="journeyEngine.next()"
+                class="px-8 py-4 bg-white text-slate-900 rounded-full font-bold hover:scale-105 transition-all">Next
+                Step →</button>
         </footer>
     </div>
 
@@ -227,7 +294,8 @@
     <script src="https://www.gstatic.com/firebasejs/12.12.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics-compat.js"></script>
-    
+
     <script type="module" src="js/app.js"></script>
 </body>
+
 </html>

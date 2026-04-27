@@ -1,4 +1,4 @@
-# Electra – Intelligent Election Learning Platform
+# Electra
 
 ![Electra Logo](assets/bolt-logo.png)
 
