@@ -1,0 +1,10 @@
+# Secrets
+js/firebase-config.js
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
+node_modules/
