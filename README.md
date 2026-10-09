@@ -2,11 +2,11 @@
 
 ![Electra Logo](assets/bolt-logo.png)
 
-**Electra** is a professional, immersive educational platform designed to simplify and gamify the democratic election process. It enables users to explore election workflows through interactive simulations, role-based learning, and real-time knowledge evaluation.
+
 
 ---
 
-## 🎯 Problem Statement
+
 
 Understanding election processes is often complex, static, and inaccessible.
 Electra transforms this into an **interactive, intuitive, and engaging learning experience**, enabling users to explore each stage of the democratic lifecycle step-by-step.

@@ -10,7 +10,7 @@ import { learningModule } from './learning.js';
 
 export const app = {
     init() {
-        console.log("Electra Journey Engine Initializing...");
+        console.log("Electra Journey Engine...");
         
         // Expose to window for HTML handlers
         window.app = this;
